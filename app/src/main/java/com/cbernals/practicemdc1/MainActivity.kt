@@ -1,5 +1,6 @@
 package com.cbernals.practicemdc1
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
@@ -7,10 +8,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cbernals.practicemdc1.adapters.BucketAdapter
 import com.cbernals.practicemdc1.adapters.ShotAdapter
-import com.cbernals.practicemdc1.utils.Bucket
-import com.cbernals.practicemdc1.utils.Shot
+import com.cbernals.practicemdc1.models.Bucket
+import com.cbernals.practicemdc1.utils.Helper
+import com.cbernals.practicemdc1.utils.OnClickListener
+import com.cbernals.practicemdc1.models.Shot
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -25,13 +28,20 @@ class MainActivity : AppCompatActivity() {
             LinearLayoutManager.HORIZONTAL,
             false
         )
-        bucketsRecyclerView.adapter = BucketAdapter(bucketsListMock)
+        bucketsRecyclerView.adapter = BucketAdapter(bucketsListMock, this)
     }
 
     private fun initShotsRecyclerView(){
         val shotsRecyclerView = findViewById<RecyclerView>(R.id.rv_shots)
         shotsRecyclerView.layoutManager = GridLayoutManager(this, 2)
         shotsRecyclerView.adapter = ShotAdapter(shotsListMock)
+    }
+
+    override fun onClick(bucket: Bucket) {
+        val intent = Intent(this, BucketActivity::class.java).apply {
+            putExtra(Helper.EXTRA_MESSAGE, bucket.text)
+        }
+        startActivity(intent)
     }
 }
 

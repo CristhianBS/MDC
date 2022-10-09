@@ -7,7 +7,7 @@ import android.widget.ImageView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.cbernals.practicemdc1.R
-import com.cbernals.practicemdc1.utils.Shot
+import com.cbernals.practicemdc1.models.Shot
 import com.cbernals.practicemdc1.utils.Utils
 
 class ShotAdapter(val shotsList: List<Shot>) : RecyclerView.Adapter<ShotAdapter.ViewHolder>() {
