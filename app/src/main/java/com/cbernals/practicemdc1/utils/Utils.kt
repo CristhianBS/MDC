@@ -1,7 +1,7 @@
 package com.cbernals.practicemdc1.utils
 
 object Utils{
-    fun getStringColor(color: String): Int =
+    fun getColorFromString(color: String): Int =
         when (color){
             "BLACK" -> -16777216
             "BLUE" -> -16776961

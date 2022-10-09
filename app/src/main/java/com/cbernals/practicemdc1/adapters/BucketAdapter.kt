@@ -8,7 +8,7 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.cbernals.practicemdc1.R
 import com.cbernals.practicemdc1.utils.Bucket
-import com.cbernals.practicemdc1.utils.Utils.getStringColor
+import com.cbernals.practicemdc1.utils.Utils
 
 class BucketAdapter(val bucketsList: List<Bucket>) : RecyclerView.Adapter<BucketAdapter.ViewHolder>() {
 
@@ -18,7 +18,7 @@ class BucketAdapter(val bucketsList: List<Bucket>) : RecyclerView.Adapter<Bucket
 
         fun render(bucket: Bucket){
             bucketText.text = bucket.text
-            bucketColor.setCardBackgroundColor(getStringColor(bucket.color))
+            bucketColor.setCardBackgroundColor(Utils.getColorFromString(bucket.color))
         }
     }
 
